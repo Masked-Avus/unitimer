@@ -8,6 +8,10 @@ UniTimer is a dead-simple implementation of a `Timer` class in C++. It consists 
 
 The central feature of UniTimer is a `Timer` class. It can be run as-is just to get the amount of time that has transpired between two points, or it can be given a callback function that will be run once the timer stops. A `Timer::Callback`, if it exists, will be run once the `stop` function is called on it, either manually or via the `Timer`'s destructor when it exits its resident scope.
 
+## Requirements
+
+UniTimer requires a minimum of C++11.
+
 ## Example
 
 ```cpp
