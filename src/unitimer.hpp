@@ -51,30 +51,30 @@ private:
     bool m_is_running { true };
 };
 
-Timer::Timer() :
+inline Timer::Timer() :
     m_start_point { Clock::now() } {}
 
-Timer::Timer(Callback callback) :
+inline Timer::Timer(Callback callback) :
     m_start_point { Clock::now() },
     m_callback { callback } {}
 
-Timer::~Timer() {
+inline Timer::~Timer() {
     stop();
 }
 
-Timer::Time_Point Timer::get_start_point() const {
+inline Timer::Time_Point Timer::get_start_point() const {
     return m_start_point;
 }
 
-Timer::Time_Point Timer::get_end_point() const {
+inline Timer::Time_Point Timer::get_end_point() const {
     return (m_is_running) ? Clock::now() : m_end_point;
 }
 
-void Timer::set_callback(Callback callback) {
+inline void Timer::set_callback(Callback callback) {
     m_callback = callback;
 }
 
-Duration Timer::get_duration(Measurement measurement) const {
+inline Duration Timer::get_duration(Measurement measurement) const {
     if (m_is_running) {
         constexpr Duration error { -1 };
         return error;
@@ -112,19 +112,19 @@ Duration Timer::get_duration(Measurement measurement) const {
     return end - start;
 }
 
-bool Timer::is_running() const {
+inline bool Timer::is_running() const {
     return m_is_running;
 }
 
-bool Timer::is_finished() const {
+inline bool Timer::is_finished() const {
     return m_is_running == false;
 }
 
-bool Timer::has_callback() const {
+inline bool Timer::has_callback() const {
     return m_callback != nullptr;
 }
 
-void Timer::stop() {
+inline void Timer::stop() {
     if (m_is_running) {
         m_end_point = Clock::now();
         m_is_running = false;
@@ -135,39 +135,39 @@ void Timer::stop() {
     }
 }
 
-void Timer::stop_without_callback() {
+inline void Timer::stop_without_callback() {
     if (m_is_running) {
         m_end_point = Clock::now();
         m_is_running = false;
     }
 }
 
-void Timer::reset() {
+inline void Timer::reset() {
     m_start_point = Clock::now();
     m_end_point = m_start_point;
     m_is_running = true;
 }
 
-Duration Timer::to_seconds(const Time_Point& time_point) {
+inline Duration Timer::to_seconds(const Time_Point& time_point) {
     return std::chrono::time_point_cast<std::chrono::seconds>(time_point)
         .time_since_epoch()
         .count();
 }
 
 
-Duration Timer::to_milliseconds(const Time_Point& time_point) {
+inline Duration Timer::to_milliseconds(const Time_Point& time_point) {
     return std::chrono::time_point_cast<std::chrono::milliseconds>(time_point)
         .time_since_epoch()
         .count();
 }
 
-Duration Timer::to_microseconds(const Time_Point& time_point) {
+inline Duration Timer::to_microseconds(const Time_Point& time_point) {
     return std::chrono::time_point_cast<std::chrono::microseconds>(time_point)
         .time_since_epoch()
         .count();
 }
 
-Duration Timer::to_nanoseconds(const Time_Point& time_point) {
+inline Duration Timer::to_nanoseconds(const Time_Point& time_point) {
     return std::chrono::time_point_cast<std::chrono::nanoseconds>(time_point)
         .time_since_epoch()
         .count();
