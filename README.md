@@ -9,8 +9,17 @@ UniTimer is a dead-simple implementation of a `Timer` class in C++. It consists 
 The central feature of UniTimer is a `Timer` class. It can be run as-is just to get the amount of time that has transpired between two points, or it can be given a callback function that will be run once the timer stops. A `Timer::Callback`, if it exists, will be run once the `stop` function is called on it, either manually or via the `Timer`'s destructor when it exits its resident scope.
 
 ## Requirements
+### Source
 
 UniTimer requires a minimum of C++11.
+
+### Unit Tests
+
+To create and run this project's unit tests, you will need to have [Premake](https://premake.github.io/) installed. If you do, use it to run the `premake5.lua` file with your toolset of choice and run the generated build files. Below is an example using Makefiles.
+
+```
+premake5 gmake
+```
 
 ## Example
 
