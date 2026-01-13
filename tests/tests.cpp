@@ -1,4 +1,4 @@
-#include "../src/unitimer.hpp"
+#include "unitimer.hpp"
 #include <iostream>
 
 using namespace unitimer;
