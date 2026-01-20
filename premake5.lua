@@ -15,7 +15,7 @@ workspace "unitimer"
         location ("build/%{prj.name}/" .. _ACTION)
         objdir "obj/"
         targetname "%{prj.name}"
-        targetdir "bin/%{prj.name}/%{prj.cfg}"
+        targetdir "bin/%{prj.name}/%{cfg.buildcfg}"
         language "C++"
         cppdialect "C++11"
         files {
